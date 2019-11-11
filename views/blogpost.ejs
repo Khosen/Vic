@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+
+ 
+<title>YouNews</title>
+
+
+<% include ./partials/favico %>
+
+<% include ./partials/sheets %>
+
+
+
+
+</head>
+<body>
+<header class="header-area">
+
+  <% include ./partials/header %>
+  
+</header>
+
+
+<div class="vizew-breadcrumb">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+<li class="breadcrumb-item"><a href="#">YouNews</a></li>
+
+<% for(var x=0; x<docs.length; x++) {%>
+  
+
+<li class="breadcrumb-item active" aria-current="page"><%= docs[x].topic %></li>
+
+<% } %>
+
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<section class="post-details-area mb-80">
+<div class="container">
+<div class="row">
+<div class="col-12">
+    <% for(var x=0; x<docs.length; x++) {%>
+     
+       
+   
+<div class="post-details-thumb mb-50">
+      
+<img src="/<%= docs[x].photo %>" style="width:40%; height:70%;"alt="">
+</div>
+</div>
+</div>
+<div class="row justify-content-center">
+
+<div class="col-12 col-lg-8 col-xl-7">
+<div class="post-details-content">
+
+<div class="blog-content">
+
+
+<div class="post-content mt-0">
+   
+<a href="#" class="post-cata cata-sm cata-danger"><%= docs[x].subcategory %></a>
+<a href=video.ejs class="post-title mb-2"><%= docs[x].topic %></a>
+<div class="d-flex justify-content-between mb-30">
+<div class="post-meta d-flex align-items-center">
+<a href="#" class="post-author"><%= docs[x].author %></a>
+<i class="fa fa-circle" aria-hidden="true"></i>
+<a href="#" class="post-date"><%= docs[x].date %></a>
+</div>
+
+<% } %>
+
+<div class="post-meta d-flex">
+
+
+    
+    
+<a href="#"><i class="fa fa-comments-o" aria-hidden="true" id="counts"></i>
+</a>
+<a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
+<a href="#"><i class="fa fa-thumbs-o-up" id="clicks" aria-hidden="true"></i></a>
+
+<!---get click count from db an dplace invisbly-->
+
+                    
+<input name="clickvalue" type="hidden" id ="clickvalue" value="1" >
+               
+
+
+
+</div>
+</div>
+</div>
+<% for(var x=0; x<docs.length; x++) {%>
+  
+<p> <%= docs[x].news %></p>
+
+
+<% } %>
+
+
+    <div class="vizew-post-author d-flex align-items-center py-5">
+        <div class="post-author-thumb">
+        <img src="img/bg-img/30.jpg" alt="">
+        </div>
+        <div class="post-author-desc pl-4">
+        <a href="#" class="author-name">Calantha Flower</a>
+        <p>Hello! My name is Nicolas Sarkozy. I’m a web designer and front-end web developer with over fifteen years of professional.</p>
+        <div class="post-author-social-info">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-pinterest"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-dribbble"></i></a>
+
+       
+        </div>
+        </div>
+        </div>
+
+        <p>&nbsp;</p>
+      
+     
+          
+
+        <div class="media">
+                
+        
+                <div class="comments media-body" id="counts">
+                  <h5 class="mt-0">Comments  <span>    </span></h5>
+                  <p>
+                   
+                    <button class="btn btn-danger"  type="button" data-toggle="collapse"
+                     data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+                     Read More comments
+                    </button>
+                  </p>
+                  <div class="collapse" id="collapse">
+                    <div class="card card-body" id="doCollapse">
+                      <% 
+                      if (typeof comments != 'undefined' && comments != null) {
+                              comments.forEach( function ( commentData ){
+                        %>
+                    <div>
+                  
+                    <span><%= commentData.name %> &nbsp;</span>
+                    <span><%= commentData.date %>  &nbsp;</span>
+                    <span><%= commentData.time %> &nbsp; </span>
+                      <p> <%= commentData.comment %> </p>
+                    </div>
+                   
+              
+                      <% });
+                        } %>
+                        <a class="btn " style="Background-color:transparent!important;"
+                         data-toggle="collapse" 
+                        href="#collapse" role="" aria-expanded="false"
+                         aria-controls="">
+                          Read less
+                        </a>
+                    </div>
+                  </div>
+             
+                  </div>
+     
+                    </div>
+                      <div  class="counter">
+
+                        <span id="counts"> </span>
+
+                      </div>
+                     
+              
+               <p></p>
+        <form action="" id="commentForm" method="">
+              <div class="form-group">
+                 <% for(var x=0; x<docs.length; x++) {%>
+     
+                                      
+                                   
+                 <input name="postId" type="hidden" id ="postId" value="<%= docs[x].postId %>"> </br>
+                                       
+                 <% } %>
+
+                <label for="comments"><h6>Leave a Comment</h6></label>
+                <p>  </p>
+
+                <input type="text" id="name"  name="name"class="form-control editboxes" placeholder="Name">
+                            
+                <textarea class="form-control editboxes" name="comment" id="comment" rows="3" placeholder="Comments"></textarea>
+              </div>
+              <button class="btn vizew-btn mt-30" id="send"  value="Send" type="submit">Submit Comment</button>
+         
+           ,<!--   <input class="btn btn-primary" id="send" type="submit" value="Send">-->
+
+            </form>
+
+
+
+
+<div class="related-post-area mt-5">
+<div class="section-heading style-2">
+<h4>Related Post</h4>
+<div class="line"></div>
+</div>
+<div class="row">
+
+<div class="col-12 col-md-4">
+<div class="single-post-area mb-50">
+<% for(var x=0; x<details.length; x++) {%>
+     
+  <% if (details[x].subcategory==="YouNews" && details[x].counter===2) { %>
+
+<div class="post-thumbnail">
+<img  style="height:170px; width : 100%" src="/<%= details[x].photo %>" alt="">
+
+</div>
+
+<div class="post-content">
+<a href="#" class="post-cata cata-sm cata-success"><%= details[x].subcategory %></a>
+<a href="<%= details[x].postId %>" class="post-title"><%= details[x].topic %></a>
+<div class="post-meta d-flex">
+<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
+<a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
+<a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
+</div>
+</div>
+</div>
+
+<% } %>
+<% } %>
+</div>
+
+ <div class="col-12 col-md-6">
+<div class="single-post-area mb-50">
+    <% for(var x=0; x<details.length; x++) {%>
+     
+        <% if (details[x].subcategory==="YouNews" && details[x].counter===3) { %>
+      
+<div class="post-thumbnail">
+<img style="height:170px; width : 100%" src="/<%= details[x].photo %>" alt="">
+
+</div>
+
+<div class="post-content">
+<a href="#" class="post-cata cata-sm cata-danger"><%= details[x].subcategory %></a>
+<a href="<%= details[x].postId %>" class="post-title"><%= details[x].topic %></a>
+<div class="post-meta d-flex">
+<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
+<a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
+<a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
+</div>
+</div>
+</div>
+
+<% } %>
+<% } %>
+</div>
+</div>
+        </div>
+
+
+</div>
+</div>
+</div>
+
+<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+<div class="sidebar-area">
+
+<div class="single-widget share-post-widget mb-50">
+<p>Share This Post</p>
+<a class="facebook" data-href="https://youtv.ng" data-layout="button_count" data-size="small"target="_blank" 
+href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyoutv.ng%2F&amp;src=sdkpreparse" 
+class="fb-xfbml-parse-ignore">
+  <i class="fa fa-facebook" aria-hidden="true"></i>  Facebook </a>
+<a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+<a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i> Google+</a>
+</div>
+
+<!--<div class="single-widget p-0 author-widget">-->
+
+  <div class="single-widget mb-50 ">
+
+    <div class="section-heading style-2 mb-30">
+    <h4>Other News</h4>
+    <div class="line"></div>
+    </div>
+    
+    <div class="single-blog-post d-flex">
+    <div class="post-thumbnail">
+        <% for(var x=0; x<details.length; x++) {%>
+     
+            <% if (details[x].subcategory==="YouNews" && details[x].counter===4) { %>
+          
+    <img src="/<%= details[x].photo %>" alt="">
+    </div>
+    <div class="post-content">
+    <a href="single-post.html" class="post-title"><%= details[x].topic %></a>
+    <div class="post-meta d-flex justify-content-between">
+    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+    </div>
+    </div>
+    
+<% } %>
+<% } %>
+
+    </div>
+    
+    <div class="single-blog-post d-flex">
+    <div class="post-thumbnail">
+        <% for(var x=0; x<details.length; x++) {%>
+     
+            <% if (details[x].subcategory==="YouNews" && details[x].counter===5) { %>
+  
+    <img src="/<%= details[x].photo %>" alt="">
+    </div>
+    <div class="post-content">
+    <a href="single-post.html" class="post-title"><%= details[x].topic %></a>
+    <div class="post-meta d-flex justify-content-between">
+    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+    </div>
+    </div>
+        
+<% } %>
+<% } %>
+    </div>
+    
+    <div class="single-blog-post d-flex">
+    <div class="post-thumbnail">
+        <% for(var x=0; x<details.length; x++) {%>
+     
+            <% if (details[x].subcategory==="YouNews" && details[x].counter===6) { %>
+  
+    <img src="/<%= details[x].photo %>" alt="">
+    </div>
+    <div class="post-content">
+    <a href="single-post.html" class="post-title"><%= details[x].topic %></a>
+    <div class="post-meta d-flex justify-content-between">
+    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+    </div>
+    </div>
+        
+<% } %>
+<% } %>
+    </div>
+    
+    <div class="single-blog-post d-flex">
+    <div class="post-thumbnail">
+        <% for(var x=0; x<details.length; x++) {%>
+     
+            <% if (details[x].subcategory==="YouNews" && details[x].counter===7) { %>
+  
+    <img src="/<%= details[x].photo %>" alt="">
+    </div>
+    <div class="post-content">
+    <a href="single-post.html" class="post-title"><%= details[x].topic %></a>
+    <div class="post-meta d-flex justify-content-between">
+    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+    </div>
+    </div>
+        
+    <% } %>
+    <% } %>
+    </div>
+    <!--</div>-->
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<footer class="footer-area">
+    <% include ./partials/footer %>
+</footer>
+<% include ./partials/scripts %>
+
+<!--<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>-->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/node_modules/socket.io-client/dist/socket.io.js"></script> 
+
+<script src="/js/socketio.js">
+
+/*var socket = io();
+$('#send').click(function(){
+ var comment = $('#comment').val();
+  //  var name=$('#name').val();
+  // var postId = $('#postId').val();
+    if(comment != ''){
+  //   var data = {'postId': postId};
+    $('.comments').append("<p>"+comment+"</p>");
+    $('#comment').val('');
+    alert("message recieved");
+    }
+    
+socket.emit('comment',data);
+alert("message from server");
+
+});*/
+</script>
+</body>
+</html>

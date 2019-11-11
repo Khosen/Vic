@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<title>Programme Entry</title>
+
+<link rel="apple-touch-icon" sizes="57x57" href="favico/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favico/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favico/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favico/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favico/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favico/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favico/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favico/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favico/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="favico/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favico/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600' type='text/css'
+media='all' />
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Six+Caps' type='text/css' media='all' />
+<!--LOCAL CSS-->
+<link rel='stylesheet' href='base/zoom_box.css' type='text/css' media='all' />
+<link rel='stylesheet' href='base/style.css' type='text/css' media='all' />
+<link rel='stylesheet' href='base/respond.css' type='text/css' media='all' />
+<link rel='stylesheet' href='base/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' href='base/background.css' type='text/css' media='all' />
+
+<script> var siteUrl = ''; </script>
+</head>
+<header class="header-area">
+ <!--LOGO--><a id="logo" href=""><img src="img/logo.png"
+  alt="YouTV" /></a>
+     
+  </header>
+        
+        
+     
+<body class=" justify-content-center">
+
+<section class="vizew-post-area mb-50">
+    <p> </p>  
+    <p>  </p> 
+    <p> </p>  
+    <p>  </p> 
+    <p>  </p>  
+    <p> </p> 
+    <p>  </p>
+
+   
+    <div class="container">
+    <div class="row">
+    <div class="col-12 col-md-7 col-lg-8">
+    <div class="all-posts-area">
+   <div id="login">
+    <form class="form-signin justify-content-center" action="/updateProg" method="POST">
+      <div >    <%- messages('message', locals) %></div>  
+  
+            <h1 class="h3 mb-3 font-weight-normal">Please Enter Programmes</h1>
+            <label for="categoryOption" class="sr-only">Category</label>
+            <select id="categoryOption" name="categoryOption" class="form-control" placeholder="choose category" data-toggle="tooltip"
+            title="click for dropdown">
+            <% for (let a=0; a< category.length; a++) {%>
+                <option value="<%= category[a].category%>"> <%= category[a].category %></option>
+               <% }%> 
+                
+         </select>
+    
+            <label for="inputSub" class="sr-only">SubCategory</label>
+            <input type="text" class="form-control" id="inputSub" name = "inputSub" placeholder="SubCategory">
+           
+            <div class="form-group row">
+                <div class="form-group col-md-4">
+
+                 <button class="btn btn-lg  btn-block btn-primary btn-danger" formaction="/createProg"  type="submit">Create</button>
+                
+                  </div>
+             
+      
+            <div class="form-group col-md-4">
+           
+            <button class="btn btn-lg  btn-block btn-primary btn-danger" formaction="/updateSub" type="submit">Update</button>
+        
+                    
+          </div>
+            <div class="form-group col-md-4">
+         
+            <button class="btn btn-lg  btn-block btn-primary btn-danger" formaction="/createProg" type="submit">Exit</button>
+           
+        </div>
+        </div>
+    </form>
+            <p class="mt-5 mb-3 text-muted">&copy; YouTV 2019</p>
+          
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+          
+    </section>
+  
+</body>
+  
+</html>

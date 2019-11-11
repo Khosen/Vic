@@ -1,0 +1,37 @@
+{
+  "name": "youtv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "kels",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "bootstrap": "*",
+    "connect-flash": "*",
+    "cors": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "^5.3.0",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "multer": "*",
+    "nodemon": "*",
+    "passport": "*",
+    "passport-jwt": "*",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
